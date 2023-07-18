@@ -1,0 +1,60 @@
+/**
+* Use the code to convert a temperature in Celsius to Fahrenheit and vice versa.
+* 
+* @author Adam Elkobaitry
+* @version 1.0
+* @date 6.28.29
+*/
+import java.util.*;
+
+public class TempConverter
+{
+
+public static void main(String args[]){
+{
+
+int playstatus = 1;
+
+while(playstatus == 1){ //this loop is to be able to repeatedly convert temps w/o ending the program
+    System.out.println("What is the temperature?");
+        Scanner in = new Scanner(System.in); //the is the Scanner Class
+        double temp = in.nextDouble(); //this line gets the temp as a double
+    System.out.println("If you like to convert from Celcius to Fahrenheit enter 'C'.");
+    System.out.println("If you like to convert from Fahrenheit to Celcius enter 'F'.");
+        String temptype = in.next(); //this line gets the unit of the temp as a string
+    while(!temptype.equals("C") && !temptype.equals("F")){ // this loop makes sure that the enteres unit is valid
+        System.out.println("[Error] Must enter 'F' or 'C'. Retry: ");
+        temptype = in.next();
+    }
+    if(temptype.equals("C")){
+        double newtemp = CtoF(temp); // here the method is called to convert Celcius to Fahrenheit
+        System.out.println("It is " + newtemp + " degrees Fahrenheit." ); //prints the result
+    }
+    else{
+        double newtemp = FtoC(temp); // here the method is called to convert Fahrenheit to Celcius
+        System.out.println("It is " + newtemp + " degrees Celcius." ); //prints result
+    }
+    
+    System.out.println("Would you like to enter another temp? Enter '1' if you would or '2' if you are done.");
+        playstatus = in.nextInt(); //asks to play again
+        while(playstatus != 1 && playstatus != 2){ //this loop checks to make sure that the entered number is valid
+            System.out.println("Ummm, that wasn't an option. Try again!");
+            System.out.println("Enter '1' if you would like to play again or '2' if you are done.");
+            playstatus = in.nextInt();
+ 
+        }
+}
+}
+}
+
+public static double CtoF(double temp){ //Gets the temp in Celcius
+    double newtemp = ((9.0/5.0) * temp) + 32.0; // this step converts the temp to Fahrenheit
+    return newtemp; //returns the new temp
+}
+    
+public static double FtoC(double temp){ //Gets the temp in Fahrenheit
+    double newtemp = (temp - 32.0) * (5.0/9.0); //this step converts the temp to Celcius
+    return newtemp; //now returns the newly calculated temp
+}
+}
+
